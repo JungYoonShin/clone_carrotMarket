@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-REPOSITORY=/home/ubuntu/action
+REPOSITORY=/home/ubuntu/app
 
 echo "> 현재 구동 중인 애플리케이션 pid 확인"
 
@@ -30,5 +30,5 @@ echo "> $JAR_NAME 실행"
 
 nohup java -jar \
         -Duser.timezone=Asia/Seoul \
-        -Dspring.config.location=/home/ubuntu/action/application.yml \
+        -Dspring.config.location=/home/ubuntu/app/application.yml \
         $JAR_NAME >> $REPOSITORY/nohup.out 2>&1 &
