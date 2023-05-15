@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-  S3_BUCKET_NAME: carrot-deploy
-
 jobs:
   build:
 
