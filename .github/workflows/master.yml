@@ -1,10 +1,10 @@
-name: coinTalk chatRoom server CI/CD
+name: CI/CD
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 env:
   S3_BUCKET_NAME: carrot-deploy
@@ -59,6 +59,8 @@ jobs:
 
       - name: Upload to S3
         run: aws s3 cp --region ap-northeast-2 ./carrot.zip s3://$S3_BUCKET_NAME/
+
+
 
       # Deploy
       - name: Deploy
