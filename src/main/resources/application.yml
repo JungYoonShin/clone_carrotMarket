@@ -18,9 +18,9 @@ spring:
         show_sql: true
         format_sql: true
 
-# Logging level
-logging:
-  level:
-    com:
-      clonecoding:
-        carrotMarket: debug
+## Logging level
+#logging:
+#  level:
+#    com:
+#      clonecoding:
+#        carrotMarket: debug
