@@ -7,37 +7,34 @@ on:
     branches: [ master ]
 env:
   S3_BUCKET_NAME: carrot-deploy
+  AWS_REGION: ap-northeast-2
+  CODEDEPLOY_NAME: carrotMarket
+  CODEDEPLOY_GROUP: carrot-group
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
+      - name: Setup JDK 11
+        uses: actions/setup-java@v3
         with:
           java-version: '11'
           distribution: 'temurin'
         
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+        run: chmod +x ./gradlew
+        shell: bash
 
       - name: Build with Gradle
-        run: ./gradlew clean build
-
-      # 디렉토리 생성
-      - name: Make Directory
-        run: mkdir -p deploy
-
-      # Jar 파일 복사
-      - name: Copy Jar
-        run: cp ./build/libs/*.jar ./deploy
+        run: ./gradlew build
+        shell: bash
 
       - name: Make zip file
-        run: zip -r ./carrot.zip ./deploy
+        run: zip -r ./$GITHUB_SHA.zip .
         shell: bash
 
       - name: Configure AWS credentials
@@ -48,11 +45,8 @@ jobs:
           aws-region: ap-northeast-2
 
       - name: Upload to S3
-        run: aws s3 cp --region ap-northeast-2 ./carrot.zip s3://$S3_BUCKET_NAME/
+        run: aws s3 cp --region ${{ env.AWS_REGION }} ./$GITHUB_SHA.zip s3://$S3_BUCKET_NAME/$GITHUB_SHA.zip
 
       # Deploy
       - name: Deploy
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: aws deploy create-deployment --application-name carrotMarket --deployment-group-name carrot-group --file-exists-behavior OVERWRITE --s3-location bucket=carrot-deploy,bundleType=zip,key=carrot.zip --region ap-northeast-2
+        run: aws deploy create-deployment --application-name $CODEDEPLOY_NAME --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name $CODEDEPLOY_GROUP --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$GITHUB_SHA.zip
