@@ -1,12 +1,9 @@
 # DB
 spring:
-  profiles:
-    include: prod
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/carrotMarket?serverTimezone=UTC&characterEncoding=UTF-8
-    username: carrot
-    password: 1234
+    url: jdbc:mysql://umc-4th-pratice.cckac2d5rtqn.ap-northeast-2.rds.amazonaws.com:3306/carrotMarket?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: admin
+    password: sju093475
   config:
     use-legacy-processing: true
 
