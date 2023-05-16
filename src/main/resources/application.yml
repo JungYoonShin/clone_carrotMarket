@@ -1,20 +1,4 @@
-# DB
 spring:
   profiles:
-    active: prod
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/carrotMarket?serverTimezone=UTC&characterEncoding=UTF-8
-    username: carrot
-    password: 1234
-  config:
-    use-legacy-processing: true
-
-  jpa:
-    properties:
-      hibernate:
-        jdbc:
-          time_zone: Asia/Seoul
-        dialect: org.hibernate.dialect.MySQL57Dialect
-        show_sql: true
-        format_sql: true
+    active:
+      prod
