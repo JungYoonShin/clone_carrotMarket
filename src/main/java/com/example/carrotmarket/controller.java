@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/login")
 @RequiredArgsConstructor
 public class controller {
     private final UserRepository userRepository;
 
-    @GetMapping("/hi")
+    @GetMapping("")
     public String hi() {
         User user = new User();
         userRepository.save(user);
