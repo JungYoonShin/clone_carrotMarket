@@ -11,13 +11,11 @@ spring:
     use-legacy-processing: true
 
   jpa:
-    hibernate:
-      ddl-auto: create
     properties:
-      jdbc:
-        time_zone: Asia/Seoul
-      dialect: org.hibernate.dialect.MySQL57Dialect
       hibernate:
+        jdbc:
+          time_zone: Asia/Seoul
+        dialect: org.hibernate.dialect.MySQL57Dialect
         show_sql: true
         format_sql: true
 
