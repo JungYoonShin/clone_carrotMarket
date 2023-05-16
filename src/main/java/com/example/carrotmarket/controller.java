@@ -13,7 +13,7 @@ public class controller {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("/")
+    @GetMapping("/dd")
     public String hi() {
         User user = new User();
         userRepository.save(user);
