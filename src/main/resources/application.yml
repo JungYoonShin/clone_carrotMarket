@@ -1,7 +1,5 @@
 # DB
 spring:
-  profiles:
-    include: prod
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/carrotMarket?serverTimezone=UTC&characterEncoding=UTF-8
@@ -11,6 +9,8 @@ spring:
     use-legacy-processing: true
 
   jpa:
+    hibernate:
+      ddl-auto: create
     properties:
       hibernate:
         jdbc:
