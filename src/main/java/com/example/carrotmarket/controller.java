@@ -17,6 +17,7 @@ public class controller {
     @GetMapping("")
     public String hi() {
         User user = new User();
+
         userRepository.save(user);
         return "djlksjdlf";
     }
