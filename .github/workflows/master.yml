@@ -34,10 +34,11 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
-      - name: Generate application.yml
+      - name: Set YML
         run: |
-          mkdir -p $GITHUB_WORKSPACE/src/main/resources
-          echo "${{ secrets.APPLICATION_PROD }}" > $GITHUB_WORKSPACE/src/main/resources/application-prod.yml
+          mkdir -p src/main/resources
+          echo "${{ secrets.APPLICATION_PROD }}" | base64 --decode > src/main/resources/application-prod.yml
+          find src
 
       # (3) Gradle build (Test 제외)
       - name: Build with Gradle
