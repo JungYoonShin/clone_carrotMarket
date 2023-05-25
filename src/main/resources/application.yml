@@ -23,10 +23,11 @@ spring:
 spring:
   config.activate.on-profile: prod
   datasource:
-    url: ${CARROT_MARKET_PROD_DB_URL}
-    username: ${CARROT_MARKET_PROD_DB_USERNAME}
-    password: ${CARROT_MARKET_PROD_DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://umc-4th-pratice.cckac2d5rtqn.ap-northeast-2.rds.amazonaws.com:3306/carrotMarket?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: admin
+    password: sju093475
+
   jpa:
     hibernate:
       ddl-auto: update
