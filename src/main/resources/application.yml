@@ -4,10 +4,16 @@ logging:
     org.hibernate.SQL: debug
 
 spring:
+  datasource:
+    url: ${CARROT_MARKET_PROD_DB_URL}
+    username: ${CARROT_MARKET_PROD_DB_USERNAME}
+    password: ${CARROT_MARKET_PROD_DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
+    hibernate.ddl-auto: update
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
 ---
 # Settings for local
 spring:
