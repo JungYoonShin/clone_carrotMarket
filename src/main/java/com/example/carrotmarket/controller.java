@@ -20,4 +20,9 @@ public class controller {
         userRepository.save(user);
         return "hihihihihihihihi";
     }
+
+    @GetMapping("/health")
+    public String healthCheck() {
+        return "health ok";
+    }
 }
