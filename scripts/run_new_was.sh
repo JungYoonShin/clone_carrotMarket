@@ -27,4 +27,5 @@ nohup java -jar \
         -Dserver.port=${TARGET_PORT} \
         -Dspring.config.location=/home/ubuntu/app/application.yml \
         /home/ubuntu/app/build/libs/*SNAPSHOT.jar > /home/ubuntu/nohup.out 2>&1 &
+echo "> Now new WAS runs at ${TARGET_PORT}."
 exit 0
