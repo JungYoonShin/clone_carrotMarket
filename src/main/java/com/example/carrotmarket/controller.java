@@ -23,6 +23,6 @@ public class controller {
 
     @GetMapping("/health")
     public String healthCheck() {
-        return "health ok";
+        return "health okkkkk";
     }
 }
