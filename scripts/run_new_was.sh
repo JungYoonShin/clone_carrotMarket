@@ -22,7 +22,6 @@ if [ ! -z ${TARGET_PID} ]; then
   sudo kill ${TARGET_PID}
 fi
 
-echo "$TIME_NOW > $JAR_FILE 파일 실행" >> $DEPLOY_LOG
 nohup java -jar \
         -Dserver.port=${TARGET_PORT} \
         -Dspring.config.location=/home/ubuntu/app/application.yml \
