@@ -18,7 +18,7 @@ public class controller {
     public String hi() {
         User user = new User();
         userRepository.save(user);
-        return "hihihihihihihihi?!!!?";
+        return "hih";
     }
 
     @GetMapping("/health")
